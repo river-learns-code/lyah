@@ -4,8 +4,15 @@ import Test.Hspec
 import Baby
 import Control.Exception (evaluate) 
 
+delta =0.001
+
+numAppEq :: (Double, Double) -> (Double, Double) -> Bool
+numAppEq (x1, y1) (x2, y2)  = (abs (x1 - x2) < delta) && (abs (y1-y2) < delta ) 
+-- do this right later
+
 main :: IO ()
 main = hspec $ do 
+    
     describe "doubleSmallNumber" $ do
       it "Doubles a number that is smaller than 100."  $
         doubleSmallNumber 13 `shouldBe` 26
@@ -65,11 +72,11 @@ main = hspec $ do
             evaluate (factorial (-1)) `shouldThrow` anyErrorCall
         
     describe "addVectors" $ do 
+        
         it "works with a pair of int two-tuples" $
             (2,3) `addVectors` (3,4) `shouldBe` (5,7)
         it "works with a pair of float two-tuples" $  
-            (2.5, 3.55) `addVectors` (3.14, 6.28) `shouldBe` (5.64, 9.83)
-
+                  (2.5, 3.55) `addVectors` (3.14, 6.28)  `shouldSatisfy`  (numAppEq (5.64, 9.83) )
     describe "first" $ do 
         it "grabs 'a' from ('a','b', 3)" $
             first ('a','b', 3) `shouldBe` 'a'
@@ -97,7 +104,12 @@ main = hspec $ do
            tell "ha" `shouldBe` "The list has two elements: 'h' and 'a'"
         it "describes a list with more than two elements as long, showing the first two elements" $
             tell [3,1,4,1,5,9] `shouldBe` "This list is long. The first two elements are: 3 and 1"
-        
+
+    describe "length'" $ do
+        it "returns 0 for an empty list" $
+           length' "" `shouldBe` 0
+        it "returns the length of a nonempty list" $ 
+            length' "happy" `shouldBe` 5
            
 
 
