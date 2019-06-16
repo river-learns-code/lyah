@@ -59,6 +59,7 @@ sayMe x = "Not between 1 and 5"
 
 factorial :: (Integral a) => a -> a 
 factorial 0 = 1
+factorial n | n < 0 = error "natural numbers only"
 factorial n = n * factorial (n -1) 
 
 addVectors :: (Num a) => (a,a) -> (a,a) -> (a,a) 

@@ -2,6 +2,7 @@ module BabySpec where
  
 import Test.Hspec
 import Baby
+import Control.Exception (evaluate) 
 
 main :: IO ()
 main = hspec $ do 
@@ -30,8 +31,8 @@ main = hspec $ do
             lucky 7 `shouldBe` "LUCKYNUMBERSEVEN!"
         it "gives a string saying 'fuck seven anyways' if called with not 7" $
             lucky 22 `shouldBe` "fuck seven anyways" 
-        it "should throw a nice little type error if you feed it a Float" $
-            pendingWith "learning how errors work"
+        it "should throw some sort of exception if you feed it a float" $
+            pendingWith "is this even possible?" 
 
     describe "jQuickSort" $ do 
         it "returns an empty list if fed an empty list" $ 
@@ -61,7 +62,7 @@ main = hspec $ do
         it "returns 479001600 for the factorial of 12" $
             factorial 12 `shouldBe` 479001600
         it "should throw some sort of error if fed a negative number" $
-            pendingWith "don't know how to quite handle that in haskell or hspec yet" 
+            evaluate (factorial (-1)) `shouldThrow` anyErrorCall
         
     describe "addVectors" $ do 
         it "works with a pair of int two-tuples" $
