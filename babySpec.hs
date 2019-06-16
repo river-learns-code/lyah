@@ -77,4 +77,8 @@ main = hspec $ do
             second ('a', 'b', 3) `shouldBe` 'b'
     describe "third" $ do 
         it "grabs 3 from ('a','b', 3)" $ 
-            third ('a','b', 3) `shouldBe 3
+            third ('a','b', 3) `shouldBe` 3
+    
+    describe "head" $ do
+       it "throws an error on an empty list" $
+           head [] `shouldThrow` anyErrorCall

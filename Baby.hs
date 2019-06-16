@@ -14,6 +14,7 @@ module Baby
  , first
  , second
  , third
+ , head'
 ) where
 
 doubleSmallNumber x     = if x > 100
@@ -69,5 +70,8 @@ first(x, _, _) = x
 second :: (a,b,c) -> b
 second (_, y, _) = y
 
-third :: (a,b,c,) ->
+third :: (a,b,c) -> c
 third (_, _, z) = z 
+
+head' :: [a] -> a
+head' = undefined
