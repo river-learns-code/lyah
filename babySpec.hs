@@ -80,6 +80,10 @@ main = hspec $ do
         it "grabs 3 from ('a','b', 3)" $ 
             third ('a','b', 3) `shouldBe` 3
     
-    describe "head" $ do
+    describe "head'" $ do
        it "throws an error on an empty list" $
-           head [] `shouldThrow` anyErrorCall
+           head' [] `shouldThrow` anyErrorCall
+       it "turns [4.2, 42, 342] into 4.2" $
+           head' [4.2,42,342] `shouldBe` 4.2
+       it "turns \"Hello\" into 'H'" $
+           head' "Hello" `shouldBe` 'H'
