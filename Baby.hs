@@ -15,6 +15,7 @@ module Baby
  , second
  , third
  , head'
+ , tell
 ) where
 
 doubleSmallNumber x     = if x > 100
@@ -77,3 +78,9 @@ third (_, _, z) = z
 head' :: [a] -> a
 head' [] = error "Can't call head' on an empty list, my friendo"
 head' (x:_) = x
+
+tell :: (Show a) => [a] -> String 
+tell [] = "The list is empty" 
+tell (x:[]) = "The list has one element: " ++ show x
+tell (x:y:[]) = "The list has two elements: " ++ show x ++ " and " ++ show y
+tell (x:y:_) = "This list is long. The first two elements are: " ++ show x ++ " and " ++ show y

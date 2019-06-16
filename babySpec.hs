@@ -87,3 +87,17 @@ main = hspec $ do
            head' [4.2,42,342] `shouldBe` 4.2
        it "turns \"Hello\" into 'H'" $
            head' "Hello" `shouldBe` 'H'
+
+    describe "tell" $ do
+        it "describes empty lists" $
+            tell ([] :: [Int]) `shouldBe` "The list is empty" 
+        it "says \"The list has one element: 2\" when fed [2]" $
+            tell [2] `shouldBe` "The list has one element: 2"
+        it "describes a list with two elements, including both elements" $
+           tell "ha" `shouldBe` "The list has two elements: 'h' and 'a'"
+        it "describes a list with more than two elements as long, showing the first two elements" $
+            tell [3,1,4,1,5,9] `shouldBe` "This list is long. The first two elements are: 3 and 1"
+        
+           
+
+
