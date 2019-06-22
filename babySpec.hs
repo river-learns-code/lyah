@@ -11,7 +11,7 @@ numAppEq (x1, y1) (x2, y2)  = (abs (x1 - x2) < delta) && (abs (y1-y2) < delta )
 -- do this right later
 
 main :: IO ()
-main = hspec $ do 
+main = hspec $ do  
     
     describe "doubleSmallNumber" $ do
       it "Doubles a number that is smaller than 100."  $
@@ -110,6 +110,31 @@ main = hspec $ do
            length' "" `shouldBe` 0
         it "returns the length of a nonempty list" $ 
             length' "happy" `shouldBe` 5
-           
-
+    
+    describe "max'" $ do
+        it "returns the larger of two integers" $
+            max' 3 5 `shouldBe` 5 
+        it "also returns the larger of two chars" $
+            max' 'c' 'd' `shouldBe` 'd'
+    
+    describe "myCompare" $ do
+        it "returns GT when the first argument is greater" $ 
+            3 `myCompare` 2 `shouldBe` GT
+        it "returns LT when the second argument is greater" $ 
+            "apple" `myCompare` "zeta448" `shouldBe` LT
+        it "returns EQ when the arguments are the same" $
+            23.433 `myCompare` 23.433 `shouldBe` EQ
+    describe "initals" $ do 
+        it "gets the first initials from a first name nad last name string" $
+            initials "J" "Espinosa" `shouldBe` "J. E."
+        it "does not sanitize input or check for capitals, and will happily grab a number if that starts your strings" $
+            initials "314158" "bob" `shouldBe` "3. b."        
+            
+    describe "cylinder" $ do
+        it "returns the surface area of a cylinder" $ 
+            cylinder 3 5    `shouldBe` 150.79644737231007  
+        it "does not check for them negative numbers" $
+            let target = -37.699
+                actual = cylinder (-3) 5 
+            in abs (target - actual)  `shouldSatisfy` (< delta)
 

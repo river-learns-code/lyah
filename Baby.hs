@@ -17,7 +17,12 @@ module Baby
  , head'
  , tell
  , length'
+ , max'
+ , myCompare
+ , initials
+ , cylinder
 ) where
+
 
 doubleSmallNumber x     = if x > 100
 						  then x 
@@ -77,8 +82,8 @@ third :: (a,b,c) -> c
 third (_, _, z) = z 
 
 head' :: [a] -> a
-head' [] = error "Can't call head' on an empty list, my friendo"
-head' (x:_) = x
+head' xs = case xs of [] -> error "Can't call head' on an empty list, my friendo"
+                      (x:_) -> x 
 
 tell :: (Show a) => [a] -> String 
 tell [] = "The list is empty" 
@@ -89,3 +94,25 @@ tell (x:y:_) = "This list is long. The first two elements are: " ++ show x ++ " 
 length' :: (Num b) => [a] -> b
 length' [] = 0 
 length' (_:xs) = 1 + length' xs
+
+max' :: (Ord a) => a -> a -> a
+max' a b 
+    | a > b     = a
+    | otherwise = b
+
+myCompare :: (Ord a) => a -> a -> Ordering
+a `myCompare` b 
+    | a > b  = GT 
+    | a == b = EQ
+    | a < b  = LT 
+
+initials :: String -> String -> String 
+initials firstname lastname = [f] ++ ". " ++ [l] ++ "." 
+    where (f:_) = firstname
+          (l:_) = lastname
+
+cylinder :: (RealFloat a) => a -> a -> a
+cylinder r h =
+    let sideArea = 2 * pi * r * h
+        topArea = pi * r^2 
+    in sideArea + 2 * topArea
