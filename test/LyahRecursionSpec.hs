@@ -30,3 +30,13 @@ spec = do
     describe "reverse'" $ do 
         it "makes my old name backwards" $ 
             reverse' "jason" `shouldBe` "nosaj"
+
+    describe "repeat'" $ do 
+        it "take' 3 (repeat' 7) gets us 3 sevens" $
+            take' 3 (repeat' 7) `shouldBe` [7,7,7]
+    
+    describe "zip'" $ do 
+        it "takes two lists, makes a list of two-tuples out of them" $ 
+            zip' [1,2,3] ['a','b','c'] `shouldBe` [(1,'a'), (2,'b'), (3,'c')]
+        it "works with lists of different sizes" $
+            zip' [3,4] "bob" `shouldBe` [(3,'b'), (4,'o')]
