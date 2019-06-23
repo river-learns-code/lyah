@@ -40,3 +40,11 @@ spec = do
             zip' [1,2,3] ['a','b','c'] `shouldBe` [(1,'a'), (2,'b'), (3,'c')]
         it "works with lists of different sizes" $
             zip' [3,4] "bob" `shouldBe` [(3,'b'), (4,'o')]
+    
+    describe "elem'" $ do 
+        it "says if something is in a list" $ 
+           4 `elem'` [5,4] `shouldBe` True 
+        it "says if something is not in a list" $ 
+            3 `elem'` [5,4] `shouldBe` False
+        it "should always return false on an empty list" $ 
+            27 `elem` [] `shouldBe` False
