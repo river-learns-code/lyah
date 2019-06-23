@@ -26,4 +26,7 @@ spec = do
             take' 3 []  `shouldBe` ([] :: [Int])
         it "returns the first 3 elements of a String" $
            take' 3 "GHC's errors are confusing" `shouldBe` "GHC"
-        
+    
+    describe "reverse'" $ do 
+        it "makes my old name backwards" $ 
+            reverse' "jason" `shouldBe` "nosaj"
