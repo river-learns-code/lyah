@@ -21,6 +21,7 @@ module Baby
  , myCompare
  , initials
  , cylinder
+ , describeList
 ) where
 
 
@@ -116,3 +117,8 @@ cylinder r h =
     let sideArea = 2 * pi * r * h
         topArea = pi * r^2 
     in sideArea + 2 * topArea
+
+describeList :: [a] -> String
+describeList xs = "The list is " ++ case xs of [] -> "empty." 
+                                               [x] -> "a singleton list."
+                                               xs -> "a longer list."

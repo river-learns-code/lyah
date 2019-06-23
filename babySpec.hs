@@ -124,12 +124,13 @@ main = hspec $ do
             "apple" `myCompare` "zeta448" `shouldBe` LT
         it "returns EQ when the arguments are the same" $
             23.433 `myCompare` 23.433 `shouldBe` EQ
+
     describe "initals" $ do 
         it "gets the first initials from a first name nad last name string" $
             initials "J" "Espinosa" `shouldBe` "J. E."
         it "does not sanitize input or check for capitals, and will happily grab a number if that starts your strings" $
             initials "314158" "bob" `shouldBe` "3. b."        
-            
+
     describe "cylinder" $ do
         it "returns the surface area of a cylinder" $ 
             cylinder 3 5    `shouldBe` 150.79644737231007  
@@ -137,10 +138,19 @@ main = hspec $ do
             let target = -37.699
                 actual = cylinder (-3) 5 
             in abs (target - actual)  `shouldSatisfy` (< delta)
-    
+
     describe "head'" $ do 
         it "returns  the first element of a list" $ 
             head' "bob" `shouldBe` 'b'
         it "throws an error on an empty list" $
             head' [] `shouldThrow` anyErrorCall
+
+    describe "describeList" $ do    
+        it "describes empty lists" $
+            describeList [] `shouldBe` "The list is empty."
+        it "describes a singleton list" $
+            describeList [2] `shouldBe` "The list is a singleton list." 
+        it "describes all lists with more than one element as 'longer'" $ 
+            describeList [2.5, 3.0, 8.8] `shouldBe` "The list is a longer list."
+            
 
