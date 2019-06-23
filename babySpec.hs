@@ -137,4 +137,10 @@ main = hspec $ do
             let target = -37.699
                 actual = cylinder (-3) 5 
             in abs (target - actual)  `shouldSatisfy` (< delta)
+    
+    describe "head'" $ do 
+        it "returns  the first element of a list" $ 
+            head' "bob" `shouldBe` 'b'
+        it "throws an error on an empty list" $
+            head' [] `shouldThrow` anyErrorCall
 
