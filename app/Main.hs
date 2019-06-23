@@ -1,6 +1,6 @@
 module Main where
 
-import Lib
+import Baby
 
 main :: IO ()
-main = someFunc
+main = putStrLn "Main.hs doesn't do nothing yet"
