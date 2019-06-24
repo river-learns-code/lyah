@@ -13,5 +13,18 @@ spec = do
     describe "defAppEq" $ do 
         it "compares two numbers just fine" $
             defAppEq 3.2 3.5 `shouldBe` False 
+    describe "multTwoWithNine" $ do
+        it "multiplies two numbers together and multipilies with 9" $
+				multTwoWithNine 2 3 `shouldBe` 54
     
         
+        
+        
+        
+        
+        
+        
+        
+        
+	
+	     

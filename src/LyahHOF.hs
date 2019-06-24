@@ -1,5 +1,9 @@
-module LyahHOF (multThree) 
+module LyahHOF (
+ multThree
+ ,multTwoWithNine) 
 where
 
 multThree :: (Num a) => a -> a -> a -> a 
 multThree x y z = x * y * z 
+
+multTwoWithNine  = multThree 9  
