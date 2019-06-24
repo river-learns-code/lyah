@@ -33,7 +33,15 @@ spec = do
            applyTwice (+3) 10 `shouldBe` 16
        it "works with string concatenation" $
            applyTwice (++ " HAHA") "HEY" `shouldBe` "HEY HAHA HAHA"
-        
+    describe "zipWith'" $ do 
+        it "adds lists together if you feed it +" $
+            zipWith' (+) [4,2,5,6] [2,6,2,3] `shouldBe` [6,8,7,9]
+        it "combines lists of strings together into a nice little [String]" $ 
+            zipWith' (++) ["foo ","bar ","baz "] ["fighters", "hoppers", "aldrin"] `shouldBe` ["foo fighters", "bar hoppers", "baz aldrin" ]
+        it "can take dynamically generated lists as inputs" $
+            zipWith' (*)  (replicate 5 2) [1..] `shouldBe` [2,4..10]  
+        it "can take itself as an argument, though that's confusion" $
+            zipWith' (zipWith' (*)) [[1,2,3],[3,5,6],[2,3,4]] [[3,2,2], [3,4,5] , [5,4,3]] `shouldBe` [[3,4,6], [9,20,30], [10,12,12]]
         
         
         
