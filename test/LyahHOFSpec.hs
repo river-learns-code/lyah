@@ -25,6 +25,14 @@ spec = do
     describe "divideByTen" $ do
        it "divides a number by 10" $ 
             divideByTen 30 `shouldBe` 3
+    describe "isUpperAlphaNum" $  
+        it "says if a character is a capital letter" $
+            isUpperAlphanum 'c' `shouldBe` False
+    describe "applyTwice" $ do 
+       it "applies (+3) twice just fine" $
+           applyTwice (+3) 10 `shouldBe` 16
+       it "works with string concatenation" $
+           applyTwice (++ " HAHA") "HEY" `shouldBe` "HEY HAHA HAHA"
         
         
         
