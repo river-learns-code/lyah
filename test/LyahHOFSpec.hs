@@ -22,7 +22,9 @@ spec = do
     describe "compareWithHundred" $ do 
         it "compares with 100 and returns an ordering" $
             compareWithHundred 35 `shouldBe` GT
-        
+    describe "divideByTen" $ do
+       it "divides a number by 10" $ 
+            divideByTen 30 `shouldBe` 3
         
         
         
