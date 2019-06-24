@@ -42,8 +42,13 @@ spec = do
             zipWith' (*)  (replicate 5 2) [1..] `shouldBe` [2,4..10]  
         it "can take itself as an argument, though that's confusion" $
             zipWith' (zipWith' (*)) [[1,2,3],[3,5,6],[2,3,4]] [[3,2,2], [3,4,5] , [5,4,3]] `shouldBe` [[3,4,6], [9,20,30], [10,12,12]]
-        
-        
+    describe "flip'" $ do 
+        it "flips the first two arguments of a function (divide))" $ 
+            flip' (/) 4 8 `shouldBe` 2
+        it "plays nice with zip" $ 
+            flip' zip [1,2,3,4,5] "hello" `shouldBe` [('h',1), ('e',2), ('l', 3), ('l', 4), ('o',5)]
+        it "can be composed with zipWith" $
+            zipWith' (flip' div) [2,2..] [10,8,6,4,2] `shouldBe` [5,4,3,2,1]
         
         
         
