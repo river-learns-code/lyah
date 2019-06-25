@@ -49,8 +49,16 @@ spec = do
             flip' zip [1,2,3,4,5] "hello" `shouldBe` [('h',1), ('e',2), ('l', 3), ('l', 4), ('o',5)]
         it "can be composed with zipWith" $
             zipWith' (flip' div) [2,2..] [10,8,6,4,2] `shouldBe` [5,4,3,2,1]
-        
-        
-        
+    describe "map" $ do 
+        it "maps (+3) to a list of numbers" $
+            map (+3) [1,5,3,1,6] `shouldBe` [4,8,6,4,9]
+        it "maps ++ ! to  alist of strings" $ 
+             map (++ "!") ["BIFF", "BANG", "POW"] `shouldBe` ["BIFF!", "BANG!", "POW!"]
+        it "can take itself as an argument" $ 
+            map (map (^2) ) [[1,2] ,[3,4,5,6], [7,8]] `shouldBe` [ [1,4] , [9,16,25,36], [49,64]]
+        it "plays nice with replicate" $ 
+           map (replicate 3) [3..6] `shouldBe` [ [3,3,3], [4,4,4], [5,5,5], [6,6,6] ] 
+        it "can grab the first element of a list of tuples and make a list" $ 
+            map fst [(1,2), (3,5), (6,3), (2,6), (2,5)] `shouldBe` [1,3,6,2,2]
 	
 	     
