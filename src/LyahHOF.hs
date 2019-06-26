@@ -15,7 +15,8 @@ module LyahHOF (
  ,map'
  ,product'
  ,last'
- ,filter')
+ ,filter'
+ ,sqrtSums)
 where
 
 multThree :: (Num a) => a -> a -> a -> a 
@@ -73,3 +74,6 @@ filter' predicate = foldr (\x acc ->  if (predicate x) then x : acc else acc) []
 
 last' :: [a] -> a
 last' = foldl1 (\_ x -> x) 
+
+sqrtSums :: Int 
+sqrtSums = length (takeWhile (<1000)  (scanl1 (+) (map sqrt [1..]))) +1

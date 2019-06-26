@@ -119,8 +119,20 @@ spec = do
             scanl (+) 0 [3,5,2,1] `shouldBe` [0,3,8,10,11]
         it "can be used to document the flipping of a list" $ 
           scanl (flip (:)) [] [3,2,1] `shouldBe` [ [], [3], [2,3], [1,2,3]]
+        it "can be used to show intermediate steps for an elemlike thingy learn to think j" $ 
+            scanl1 (\acc x -> if x > acc then x else acc) [3,4,5,3,7,9,2,1] `shouldBe` [3,4,5,5,7,9,9,9]
     describe "scanr" $ do
         it "can add a list up from the right, showing intermediate steps" $
             scanr (+) 0 [3,4,2,1] `shouldBe` [10,7,3,1,0]
-            
+    describe "sqrtSums" $ do 
+       it "finds what number you have to get to before the sum of sqrts is just < 1000" $
+           sqrtSums `shouldBe` 131
+    describe "$" $ do 
+       it "can be combined with map to apply a list of functions to a variable" $ 
+           map ($ 3) [(4+), (10*), (^2), sqrt] `defListAppEq` [7.0,30.0,9.0,1.73205] `shouldBe` True  
+    --describe "" $ do 
+    --describe "" $ do 
+    --describe "" $ do 
+    --describe "" $ do 
+
 --journey of the zumbinis
