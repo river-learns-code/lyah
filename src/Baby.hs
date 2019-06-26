@@ -22,6 +22,7 @@ module Baby
  , initials
  , cylinder
  , describeList
+ , largestDivisible
 ) where
 
 
@@ -41,7 +42,7 @@ rightTriPer24           = [ (a,b,c) | c <- [1..10], b <- [1.110], a <- [1..10],
                                        a^2 + b^2 == c^2, a+b+c==24 ]
 
 addThree :: Int -> Int -> Int -> Int
-addThree x y z = x + y + z  
+addThree = \x -> \y -> \z -> x + y + z 
 
 circumference :: Float -> Float
 circumference r = 2 * pi * r
@@ -49,9 +50,9 @@ circumference r = 2 * pi * r
 jquickSort :: Ord a => [a] -> [a]
 -- Using list comprehensions
 jquickSort []     = []                               -- The empty list is already sorted
-jquickSort (x:xs) = jquickSort [a | a <- xs, a < x]   -- Sort the left part of the list
+jquickSort (x:xs) = jquickSort ( filter (<=x) xs)    -- Sort the left part of the list
                    ++ [x] ++                        -- Insert pivot between two sorted parts
-                   jquickSort [a | a <- xs, a >= x]  -- Sort the right part of the list
+                   jquickSort (filter (>x) xs)  -- Sort the right part of the list
 
 lucky :: (Integral a) => a -> String
 lucky 7 = "LUCKYNUMBERSEVEN!"
@@ -123,3 +124,7 @@ describeList xs = "The list is " ++ what xs
     where what []  = "empty." 
           what [x] = "a singleton list." 
           what xs  = "a longer list."  
+
+largestDivisible :: (Integral a) => a 
+largestDivisible = head (filter p [100000,99999..])
+    where p x = x `mod` 3829 == 0
