@@ -114,4 +114,13 @@ spec = do
             evaluate (last' []) `shouldThrow` anyException
       --  it "will probably run forever if fed a negative number" $
         --    chain (-1) `shouldBe` [1]
+    describe "scanl" $ do 
+        it "goes through a list, starting at the left, and  applies a function to it, returning all intermediate values as a list" $ 
+            scanl (+) 0 [3,5,2,1] `shouldBe` [0,3,8,10,11]
+        it "can be used to document the flipping of a list" $ 
+          scanl (flip (:)) [] [3,2,1] `shouldBe` [ [], [3], [2,3], [1,2,3]]
+    describe "scanr" $ do
+        it "can add a list up from the right, showing intermediate steps" $
+            scanr (+) 0 [3,4,2,1] `shouldBe` [10,7,3,1,0]
+            
 --journey of the zumbinis
