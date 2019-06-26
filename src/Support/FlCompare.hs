@@ -13,9 +13,10 @@ defaultDelta = 0.001
 defAppEq num1 num2 = numAppEq num1 num2 defaultDelta 
 
 listAppEq :: (Num a, Ord a) => [a] -> [a] -> a -> Bool
-listAppEq xs ys delta =  not (False `elem` differences  )
+listAppEq xs ys delta =  minimum comparisons
     where 
-      differences = zipWith (\x y -> numAppEq x y delta) xs ys 
-      
+      comparisons = zipWith (\x y -> numAppEq x y delta) xs ys 
+-- could've done this with a fold
 
 defListAppEq xs ys = listAppEq xs ys defaultDelta
+
