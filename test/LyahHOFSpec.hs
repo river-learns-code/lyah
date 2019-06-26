@@ -129,7 +129,10 @@ spec = do
            sqrtSums `shouldBe` 131
     describe "$" $ do 
        it "can be combined with map to apply a list of functions to a variable" $ 
-           map ($ 3) [(4+), (10*), (^2), sqrt] `defListAppEq` [7.0,30.0,9.0,1.73205] `shouldBe` True  
+           map ($ 3) [(4+), (10*), (^2), sqrt] `defListAppEq` [7.0,30.0,9.0,1.73205] `shouldBe` True
+    describe "oddSquareSum" $ 
+        it "returns the sum of all odd squares less than 10000" $ 
+            oddSquareSum `shouldBe` 166650  
     --describe "" $ do 
     --describe "" $ do 
     --describe "" $ do 
