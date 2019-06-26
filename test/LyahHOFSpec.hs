@@ -4,6 +4,8 @@ import Test.Hspec
 import LyahHOF
 import Baby
 import Support.FlCompare
+import Control.Exception (evaluate)
+
 
 spec :: Spec
 
@@ -68,20 +70,20 @@ spec = do
     describe "recursivelyEmptyList" $ do 
         it "takes a List an inefficiently turns it into an empty list" $ 
             recursivelyEmptyList "Bow!" `shouldBe` []
-    describe "filter" $ do 
+    describe "filter'" $ do 
         it "when applied to a list of numbers with (>3) , can get all numbers from a list that are greater than a given number" $ 
             filter (>3) [1,5,3,2,1,6,4,3,2,1] `shouldBe` [5,6,4]
         it "can pull every instance of 3 out of a list using ==" $ 
-            filter (==3) [1,2,3,4,5] `shouldBe` [3]
+            filter' (==3) [1,2,3,4,5] `shouldBe` [3]
         it "can use predicate functions like even" $ 
-            filter even [1..10] `shouldBe` [2,4..10]
+            filter' even [1..10] `shouldBe` [2,4..10]
         it "plays nice with let, but can I make it work in hspec?" $ 
             let notNull x = not (null x) 
-                in filter notNull [[1,2,3],[],[3,4,5],[2,2],[],[],[]] `shouldBe` [[1,2,3],[3,4,5], [2,2]]
+                in filter' notNull [[1,2,3],[],[3,4,5],[2,2],[],[],[]] `shouldBe` [[1,2,3],[3,4,5], [2,2]]
         it "can take the lowercase out of a string, I imagine it's great for sanitation if string weren't slow." $
-            filter (`elem` ['a' .. 'z']) "we DON'T, like, LIKE the LYAH book" `shouldBe` "welikethebook"
+            filter' (`elem` ['a' .. 'z']) "we DON'T, like, LIKE the LYAH book" `shouldBe` "welikethebook"
         it "can take the uppercase out, too" $ 
-            filter (`elem` ['A' .. 'Z'] ) "we DON'T, like, LIKE the LYAH book" `shouldBe` "DONTLIKELYAH"
+            filter' (`elem` ['A' .. 'Z'] ) "we DON'T, like, LIKE the LYAH book" `shouldBe` "DONTLIKELYAH"
       --  it "fuck the guy who wrote lyah, he thinks he's a clever shit" $ 
         --    "the guy" `shouldBe` "smarter" --but he never will be 
     describe "largestDivisible" $ do 
@@ -100,7 +102,16 @@ spec = do
           sum' [3,5,2,1] `shouldBe` 11 
       it "is good on empty lists?" $
           sum' [] `shouldBe` 0
-      
+    describe "product'" $ do 
+        it "multiplies the elements of a list together" $ 
+            product' [1,2,3] `shouldBe` 6
+        it "throws an exception on an empty list" $
+            evaluate (product' []) `shouldThrow` anyException
+    describe "last'" $ do
+        it "gets the last element of a list" $
+           last' "pee" `shouldBe` 'e'
+        it "throws an error on empty list" $
+            evaluate (last' []) `shouldThrow` anyException
       --  it "will probably run forever if fed a negative number" $
         --    chain (-1) `shouldBe` [1]
 --journey of the zumbinis

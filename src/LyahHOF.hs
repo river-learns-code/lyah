@@ -12,7 +12,10 @@ module LyahHOF (
  ,chainsUnder100WithLength15OrGreater
  ,chain
  ,sum'
- ,map')
+ ,map'
+ ,product'
+ ,last'
+ ,filter')
 where
 
 multThree :: (Num a) => a -> a -> a -> a 
@@ -61,3 +64,12 @@ sum' = foldl (+) 0
 
 map' :: (a -> b) -> [a] -> [b]
 map' f xs = foldr (\x acc -> f x : acc) [] xs
+
+product' :: (Num a) => [a] -> a 
+product' = foldr1 (*)
+
+filter' :: (a -> Bool) -> [a]-> [a]
+filter' predicate = foldr (\x acc ->  if (predicate x) then x : acc else acc) []
+
+last' :: [a] -> a
+last' = foldl1 (\_ x -> x) 

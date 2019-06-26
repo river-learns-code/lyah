@@ -84,8 +84,9 @@ third :: (a,b,c) -> c
 third (_, _, z) = z 
 
 head' :: [a] -> a
-head' xs = case xs of [] -> error "Can't call head' on an empty list, my friendo"
-                      (x:_) -> x 
+--head' xs = case xs of [] -> error "Can't call head' on an empty list, my friendo"
+  --                    (x:_) -> x 
+head' = foldr1 (\x _ -> x)
 
 tell :: (Show a) => [a] -> String 
 tell [] = "The list is empty" 
