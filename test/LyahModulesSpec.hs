@@ -15,4 +15,12 @@ spec = do
             intersperse '.' "MONKEY" `shouldBe` "M.O.N.K.E.Y"
         it "puts numbers between other numbers" $
             intersperse 0 [1..6] `shouldBe` [1,0,2,0,3,0,4,0,5,0,6]
+    describe "intercalate" $ do 
+        it "takes a lists oflists and flattens the result, putting something in between" $ 
+            intercalate " " ["hey", "there","folx"] `shouldBe` "hey there folx"
+        it " takes works with lists of numbers" $ 
+            intercalate [0,0,0] [[1,2,3],[4,5,6],[7,8,9]] `shouldBe` [1,2,3,0,0,0,4,5,6,0,0,0,7,8,9] 
+        it "takes an empty list and just flattens" $
+            intercalate "" ["fuck", "the","author","of","lyah"] `shouldBe` "fucktheauthoroflyah"
+        
         
