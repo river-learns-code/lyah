@@ -6,16 +6,16 @@ where
 
 
 numAppEq :: (Num a, Ord a) => a -> a -> a -> Bool 
-numAppEq num1 num2 delta = (abs (num1 - num2) < delta)
+numAppEq delta num1 num2  = (abs (num1 - num2) < delta)
 defaultDelta = 0.001
 
 
-defAppEq num1 num2 = numAppEq num1 num2 defaultDelta 
+defAppEq num1 num2 = numAppEq defaultDelta num1 num2 
 
 listAppEq :: (Num a, Ord a) => [a] -> [a] -> a -> Bool
-listAppEq xs ys delta =  minimum comparisons
+listAppEq xs ys delta =  (False `notElem` comparisons)
     where 
-      comparisons = zipWith (\x y -> numAppEq x y delta) xs ys 
+      comparisons = zipWith (numAppEq delta) xs ys 
 -- could've done this with a fold
 
 defListAppEq xs ys = listAppEq xs ys defaultDelta
