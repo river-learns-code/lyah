@@ -4,6 +4,7 @@ where
 import Test.Hspec
 import LyahModules
 import Data.List
+import Control.Exception (evaluate)
 
 spec :: Spec 
 spec = do
@@ -48,3 +49,10 @@ spec = do
             or (map (==4) [2,3,4,5,6,1] ) `shouldBe` True 
         it "returns Flase if all elements of the list are false" $
             or (map  (>4) [1,2,3] ) `shouldBe` False
+    describe "any and all " $ do 
+        it "any returns true if any   element of a list satisfies the predicate, like we were doing with and, or, and map" $
+            any (==4) [2,3,5,6,1,4] `shouldBe` True
+        it "all returns false if at least one element does not satisfy the predicate"
+            all (`elem` ['A'..'Z'])  "HEYYALLwhatsup" `shouldBe` False 
+        it "either will throw an error if fed an empty list, which is a type error, which I think I get" 
+            evaluate (any []) `shouldThrow` anyException
