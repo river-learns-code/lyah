@@ -29,3 +29,22 @@ spec = do
             transpose ["hey","there","folx"] `shouldBe` ["htf", "eho", "yel", "rx", "e"] 
         it "can be used to model polynomial addition" $ 
             map sum ( transpose [[0,3,5,9],[10,0,0,9],[8,5,1,-1]])  `shouldBe` [18,8,6,17]
+    describe "concat" $ do 
+        it "is the same as intercalate with an empty list" $ 
+            concat ["hi","there"] `shouldBe` "hithere"
+        it "workswith nums too" $ 
+            concat [[3,4,5],[2,3,4],[2,1,1]] `shouldBe` [3,4,5,2,3,4,2,1,1]
+
+    describe "concatMap" $ do
+       it "is the same as calling map then concat" $
+          concatMap (replicate 2) [1,2,3] `shouldBe` [1,1,2,2,3,3]
+    describe "and" $ do 
+        it "returns true if all the elements of a list ar true" $ 
+            and [True, True] `shouldBe` True
+        it "returns false if one of the elements of the list is false" $ 
+            and ( map (== 4) [4,4,4,3,4] ) `shouldBe` False
+    describe "or" $ do 
+        it "returns true if one of the lists of an element is true" $ 
+            or (map (==4) [2,3,4,5,6,1] ) `shouldBe` True 
+        it "returns Flase if all elements of the list are false" $
+            or (map  (>4) [1,2,3] ) `shouldBe` False
