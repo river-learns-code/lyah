@@ -52,7 +52,15 @@ spec = do
     describe "any and all " $ do 
         it "any returns true if any   element of a list satisfies the predicate, like we were doing with and, or, and map" $
             any (==4) [2,3,5,6,1,4] `shouldBe` True
-        it "all returns false if at least one element does not satisfy the predicate"
+        it "all returns false if at least one element does not satisfy the predicate" $
             all (`elem` ['A'..'Z'])  "HEYYALLwhatsup" `shouldBe` False 
-        it "either will throw an error if fed an empty list, which is a type error, which I think I get" 
-            evaluate (any []) `shouldThrow` anyException
+    describe "iterate" $ do 
+        it "applies a function repeatedly to its argument and puts the results in a list" $
+            take 10 ( iterate (*2) 1) `shouldBe` [1,2,4,8,16,32,64,128, 256, 512]
+        it "here's an example with strings" $ 
+            take 3 (iterate (++ "haha") "haha") `shouldBe` ["haha","hahahaha","hahahahahaha"]
+        it "is the greatest-est, I used it for something!" $
+            True `shouldBe` True
+    
+    
+        
