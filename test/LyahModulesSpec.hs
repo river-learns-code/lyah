@@ -61,6 +61,14 @@ spec = do
             take 3 (iterate (++ "haha") "haha") `shouldBe` ["haha","hahahaha","hahahahahaha"]
         it "is the greatest-est, I used it for something!" $
             True `shouldBe` True
-    
+    describe "splitAt" $ do  
+        it "splits a list into two tuples of the same type, with an index" $ 
+            splitAt 3 "heyMan" `shouldBe` ("hey","Man")
+        it "will return the whole list paired with an empty list if the index fed is large enough" $
+            splitAt 100 "YoBro" `shouldBe` ("YoBro","")
+        it "takes negative indexes gracefully" $ 
+            splitAt (-3) "YoBro" `shouldBe` ("", "YoBro")
+        it "can be used to switch words in strings" $
+            (let (a,b) = splitAt 2 "YoBro" in b ++ a) `shouldBe` "BroYo"
     
         
