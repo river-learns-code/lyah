@@ -93,3 +93,11 @@ spec = do
     describe "break" $ 
         it "separates a list into tuples when the predicate is false" $ 
             break (==4) [1,2,3,4,5,6,7] `shouldBe` ([1,2,3],[4,5,6,7])
+    describe "sort" $ 
+        it "does what it says on the tin" $
+            sort [3,1,4,1,5,9,2,6,5,3,5] `shouldBe` [1,1,2,3,3,4,5,5,5,6,9]
+    describe "group" $  do
+        it "groups elements into sublists if they're equal" $ 
+            group [1,2,2,2,1,1,4,3,2] `shouldBe` [[1],[2,2,2],[1,1],[4],[3],[2]]
+        it "combine with sort to se how many of eachelement in the list" $ 
+            (map (\l@(x:xs) -> (x, length l) ) . group . sort)  [1,2,2,2,1,1,4,3,2] `shouldBe` [(1,3), (2,4) ,(3,1), (4,1)]
