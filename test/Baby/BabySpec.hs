@@ -3,6 +3,7 @@ module Baby.BabySpec (spec) where
 import Test.Hspec
 import Baby
 import Control.Exception (evaluate) 
+import Test.Hspec
 
 delta =0.001
 

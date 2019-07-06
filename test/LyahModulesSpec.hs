@@ -8,7 +8,7 @@ import Control.Exception (evaluate)
 
 spec :: Spec 
 spec = do
-    describe "numUniques" $ do 
+    describe "numUniques" $  
       it "tells us how many unique elements there are in a list" $ 
           numUniques [1,4,2,8,8,8,2] `shouldBe` 4
     describe "intersperse" $ do 
@@ -70,5 +70,18 @@ spec = do
             splitAt (-3) "YoBro" `shouldBe` ("", "YoBro")
         it "can be used to switch words in strings" $
             (let (a,b) = splitAt 2 "YoBro" in b ++ a) `shouldBe` "BroYo"
-    
-        
+    describe "takeWhile" $ do 
+        it "make a sublist by taking elements, stopping when the predicate first fails" $ 
+            takeWhile (>3) [4,5,6,7,8,9,8,1,7,6,5,4,3,2,10] `shouldBe` [4,5,6,7,8,9,8]
+        it "works nice with strings, though if you're doing that in production use production libraries" $
+            takeWhile (/= ' ') "This is not a sentence." `shouldBe` "This"
+        it "can be used to find the sume of all third powers under 1000" $ 
+            sum ( takeWhile (<10090) (map (^3) [1..]) ) `shouldBe` 53361
+    describe "dropWhile" $ do 
+        it  "same as takewhile, but it drops elements until the predicate is false" $
+           dropWhile (/= ' ') "This is a sentence." `shouldBe` " is a sentence."
+        it "example of peeking inside a list of tuples" $
+            head (dropWhile (\(val,y,m,d) -> val < 1000) stock) `shouldBe` (1001.4, 2008, 9, 4) 
+        it "chops off everything off the front of a list less than a value" $
+            dropWhile (<3) [1,2,2,2,2,3,4,5,4,3,2,1] `shouldBe` [3,4,5,4,3,2,1]
+            
