@@ -84,4 +84,12 @@ spec = do
             head (dropWhile (\(val,y,m,d) -> val < 1000) stock) `shouldBe` (1001.4, 2008, 9, 4) 
         it "chops off everything off the front of a list less than a value" $
             dropWhile (<3) [1,2,2,2,2,3,4,5,4,3,2,1] `shouldBe` [3,4,5,4,3,2,1]
-            
+    describe "span" $ do 
+        it "is like takeWhile, returns tuple of list kept and dropped" $ 
+            let (fw, rest) = span (/=' ') "This is a sentence."
+                in  ("First word :" ++ fw ++ ", the rest:" ++ rest ) `shouldBe` "First word :This, the rest: is a sentence."
+        it "is basically the opposite of break" $
+            span (/= 4) [1,2,3,4,5,6,7] `shouldBe` break (==4) [1,2,3,4,5,6,7]
+    describe "break" $ 
+        it "separates a list into tuples when the predicate is false" $ 
+            break (==4) [1,2,3,4,5,6,7] `shouldBe` ([1,2,3],[4,5,6,7])
