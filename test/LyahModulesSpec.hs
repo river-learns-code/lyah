@@ -120,3 +120,13 @@ spec = do
           isInfixOf  "Cat" "ima cat burglar" `shouldBe`  False
       it "here's another false example" $
          isInfixOf  "cats" "ima cat burglar" `shouldBe` False
+    describe "isPrefixOf" $ do
+      it "tells you if a string is at the beginning of another string.(list,really)" $
+        isPrefixOf "hey" "heyMan" `shouldBe` True
+      it "doesnt'work if the search list is in the middle" $
+       isPrefixOf "hey" "oh hey there" `shouldBe` False
+    describe "isSuffixOf" $ do
+      it "tells you if a list is at the end of another list" $
+         isSuffixOf "there!" "hithere!" `shouldBe` True
+      it "here is a false example" $
+        "there!" `isSuffixOf` "hithere" `shouldBe` False
