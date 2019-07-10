@@ -169,3 +169,7 @@ spec = do
             isSuffixOf "there!" "hithere!" `shouldBe` True
         it "here is a false example" $
             "there!" `isSuffixOf` "hithere" `shouldBe` False
+    describe "partition" $ do
+        it "splits a list into a tuple of two lists via a predicate" $
+            partition (`elem` ['A' .. 'Z']) "WEdoLOVEall" `shouldBe`
+            ("WELOVE", "doall")
