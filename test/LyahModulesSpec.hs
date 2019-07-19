@@ -214,4 +214,21 @@ spec = do
         it "returns Nothing when it finds nothing"
             $          find (> 9) [1, 2, 3, 4, 5, 6]
             `shouldBe` Nothing
-
+    describe "elemIndex" $ do
+        it "gives the index of a list element as a Maybe Int"
+            $           4
+            `elemIndex` [1, 2, 3, 4, 5, 6]
+            `shouldBe`  Just 3
+        it "returns Nothing if the element isn't found"
+            $           10
+            `elemIndex` [1, 2, 3, 4, 5, 6]
+            `shouldBe`  Nothing
+    describe "elemIndices" $ do
+        it "is much like elemIndex  returns a list of indices"
+            $             ' '
+            `elemIndices` "where are the spaces?"
+            `shouldBe`    [5, 9, 13]
+        it "returns an empty list instead of Nothing"
+            $             6
+            `elemIndices` [3, 8]
+            `shouldBe`    []
