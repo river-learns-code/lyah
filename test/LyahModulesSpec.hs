@@ -207,4 +207,11 @@ spec = do
         it "the list satisfying the predicate comes first"
             $          partition (> 3) [1, 3, 5, 6, 3, 2, 1, 0, 3, 7]
             `shouldBe` ([5, 6, 7], [1, 3, 3, 2, 1, 0, 3])
+    describe "find" $ do
+        it "take a list, predicate, returns first element satifying predicate"
+            $          find (> 4) [1, 2, 3, 4, 5, 6]
+            `shouldBe` Just 5
+        it "returns Nothing when it finds nothing"
+            $          find (> 9) [1, 2, 3, 4, 5, 6]
+            `shouldBe` Nothing
 
