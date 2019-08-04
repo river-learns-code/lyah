@@ -243,3 +243,12 @@ spec = do
         $ it "returns a list of the indices of elems that satisfy the predicate"
         $ findIndices (`elem` ['A' .. 'Z']) "Where Are The Caps?!"
         `shouldBe` [0, 6, 10, 14]
+    describe "lines"
+        $          it "takes a string around returns a list of lines"
+        $          lines "1st line\n 2nd line\nthird line"
+        `shouldBe` ["1st line", " 2nd line", "third line"]
+    describe "unlines"
+        $ it "takes a list of strings and returns a single multiline string"
+        $ unlines ["first", "2nd", "3rd"]
+        `shouldBe` "first\n2nd\n3rd\n"
+
