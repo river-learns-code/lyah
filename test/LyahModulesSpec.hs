@@ -232,3 +232,14 @@ spec = do
             $             6
             `elemIndices` [3, 8]
             `shouldBe`    []
+    describe "findIndex" $ do
+        it "returns the index of the first element that satisfies a predicate"
+            $          findIndex (== 4) [5, 3, 2, 1, 6, 4]
+            `shouldBe` Just 5
+        it "returns a Maybe, so nothing if it's not there"
+            $          findIndex (> 7) [5, 3, 2, 1, 6, 4]
+            `shouldBe` Nothing
+    describe "findIndices"
+        $ it "returns a list of the indices of elems that satisfy the predicate"
+        $ findIndices (`elem` ['A' .. 'Z']) "Where Are The Caps?!"
+        `shouldBe` [0, 6, 10, 14]
