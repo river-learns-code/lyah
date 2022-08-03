@@ -5,7 +5,7 @@ import Baby
 import Control.Exception (evaluate) 
 import Test.Hspec
 
-delta =0.001
+delta = 0.001
 
 numAppEq :: (Double, Double) -> (Double, Double) -> Bool
 numAppEq (x1, y1) (x2, y2)  = (abs (x1 - x2) < delta) && (abs (y1-y2) < delta ) 
@@ -37,8 +37,8 @@ spec = do
     describe "lucky" $ do 
         it "RETURNS STRING 'LUCKY NUMBER SEVEN!' if called with 7" $
             lucky 7 `shouldBe` "LUCKYNUMBERSEVEN!"
-        it "gives a string saying 'fuck seven anyways' if called with not 7" $
-            lucky 22 `shouldBe` "fuck seven anyways" 
+        it "gives a string saying 'but are you seven? You are not seven' if called with not 7" $
+            lucky 22 `shouldBe` "but are you seven? You are not seven" 
         it "should throw some sort of exception if you feed it a float" $
             pendingWith "is this even possible?" 
 
@@ -53,7 +53,7 @@ spec = do
     describe "sayMe" $ do
         it "transmogrifies 1 to \"Uno!\"" $
             sayMe 1 `shouldBe` "Uno!" 
-        it "transogrifies 1 to \"Dos!\"" $
+        it "transogrifies 22 to \"Dos!\"" $
             sayMe 2 `shouldBe` "Dos!" 
         it "transmogrifies 3 to \"Tres!\"" $
             sayMe 3 `shouldBe` "Tres!" 
@@ -82,7 +82,7 @@ spec = do
         it "grabs 'a' from ('a','b', 3)" $
             first ('a','b', 3) `shouldBe` 'a'
     describe "second" $ do 
-        it "grabs 'b' from ('a','b', .)" $ 
+        it "grabs 'b' from ('a','b', 3)" $ 
             second ('a', 'b', 3) `shouldBe` 'b'
     describe "third" $ do 
         it "grabs 3 from ('a','b', 3)" $ 

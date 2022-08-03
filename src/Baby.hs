@@ -56,7 +56,7 @@ jquickSort (x:xs) = jquickSort ( filter (<=x) xs)    -- Sort the left part of th
 
 lucky :: (Integral a) => a -> String
 lucky 7 = "LUCKYNUMBERSEVEN!"
-lucky x = "fuck seven anyways"
+lucky x = "but are you seven? You are not seven"
 
 sayMe :: (Integral a) => a -> String
 sayMe 1 = "Uno!"

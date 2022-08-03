@@ -164,7 +164,7 @@ spec = do
                              , ("w00t", "")
                              ]
    describe "search" $ do
-      it "it sees if a string shows up at the inside of another string "
+      it "sees if a string shows up at the inside of another string "
          $          search "bal" "blargl"
          `shouldBe` False
       it
