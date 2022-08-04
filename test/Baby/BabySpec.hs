@@ -40,7 +40,8 @@ spec = do
             lucky 22 `shouldBe` "but are you seven? You are not seven" 
         it "should throw some sort of exception if you feed it a float" $
             pendingWith "is this even possible to test?"
-            
+            --evaluate (lucky (3.14 :: [RealFloat]) ) `shouldThrow` anyErrorCall
+            --latest attempt above 
     describe "rQuickSort" $ do 
         it "does nothing to any already sorted list" $
             rquickSort [1,2,3] `shouldBe` [1,2,3]
@@ -77,12 +78,15 @@ spec = do
             (2,3) `addVectors` (3,4) `shouldBe` (5,7)
         it "works with a pair of float two-tuples" $  
                   (2.5, 3.55) `addVectors` (3.14, 6.28)  `shouldSatisfy`  (numAppEq (5.64, 9.83) )
+    
     describe "first" $ do 
         it "grabs 'a' from ('a','b', 3)" $
             first ('a','b', 3) `shouldBe` 'a'
+    
     describe "second" $ do 
         it "grabs 'b' from ('a','b', 3)" $ 
             second ('a', 'b', 3) `shouldBe` 'b'
+    
     describe "third" $ do 
         it "grabs 3 from ('a','b', 3)" $ 
             third ('a','b', 3) `shouldBe` 3
@@ -127,7 +131,7 @@ spec = do
 
     describe "initals" $ do 
         it "gets the first initials from a first name nad last name string" $
-            initials "J" "Espinosa" `shouldBe` "J. E."
+            initials "R" "Espinosa" `shouldBe` "R. E."
         it "does not sanitize input or check for capitals, and will happily grab a number if that starts your strings" $
             initials "314158" "bob" `shouldBe` "3. b."        
 

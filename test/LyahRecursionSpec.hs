@@ -20,6 +20,8 @@ spec = do
             replicate' 0 5.5 `shouldBe` []
         it "actually takes 5.5 as an input where int should be?" $
             replicate' 5.5 9.9 `shouldBe` [9.9,9.9,9.9,9.9,9.9,9.9]
+        it "will replicate a number or anything else the given number of times" $
+            replicate' 5 'a' `shouldBe` "aaaaa"
     
     describe "take'" $ do 
         it "returns an empty list when you try to take something from an empty list" $ 
