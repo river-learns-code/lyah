@@ -41,7 +41,8 @@ spec = do
         it "should throw some sort of exception if you feed it a float" $
             pendingWith "is this even possible to test?"
             --evaluate (lucky (3.14 :: [RealFloat]) ) `shouldThrow` anyErrorCall
-            --latest attempt above 
+            --latest attempt below
+            --evaluate (lucky (3.14 :: Double)) `shouldThrow` anyErrorCall
     describe "rQuickSort" $ do 
         it "does nothing to any already sorted list" $
             rquickSort [1,2,3] `shouldBe` [1,2,3]

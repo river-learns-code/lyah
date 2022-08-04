@@ -31,7 +31,7 @@ spec = do
     
     describe "reverse'" $ do 
         it "makes my old name backwards" $ 
-            reverse' "jason" `shouldBe` "nosaj"
+            reverse' "river" `shouldBe` "revir"
 
     describe "repeat'" $ do 
         it "take' 3 (repeat' 7) gets us 3 sevens" $

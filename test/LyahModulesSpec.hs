@@ -145,6 +145,7 @@ spec = do
          $          (map (\l@(x : xs) -> (x, length l)) . group . sort)
                        [1, 2, 2, 2, 1, 1, 4, 3, 2]
          `shouldBe` [(1, 3), (2, 4), (3, 1), (4, 1)]
+   
    describe "inits and tails" $ do
       it
             "inits is a list of sublists, of increasing size, each starting from the beginning of the list "
@@ -153,6 +154,10 @@ spec = do
       it "the first element of inits is an empty list"
          $          head (inits "blargl")
          `shouldBe` ""
+      
+      it "tails of w00t should be [\"\",\"t\", \"0t\", \"00t\", \"w00t\"] " $
+           tails "w00t" `shouldBe` ["w00t","00t", "0t", "t",""]
+
       it
             "they can be combined to make a nice list of tuples where each tuple contains the whole word"
          $ let w = "w00t"
