@@ -13,7 +13,6 @@ numAppEq (x1, y1) (x2, y2)  = (abs (x1 - x2) < delta) && (abs (y1-y2) < delta )
 
 spec :: Spec
 spec = do  
-    
     describe "doubleSmallNumber" $ do
       it "Doubles a number that is smaller than 100."  $
         doubleSmallNumber 13 `shouldBe` 26
@@ -40,20 +39,20 @@ spec = do
         it "gives a string saying 'but are you seven? You are not seven' if called with not 7" $
             lucky 22 `shouldBe` "but are you seven? You are not seven" 
         it "should throw some sort of exception if you feed it a float" $
-            pendingWith "is this even possible?" 
-
-    describe "jQuickSort" $ do 
-        it "returns an empty list if fed an empty list" $ 
-            jquickSort [1,2,3] `shouldBe` [1,2,3]
+            pendingWith "is this even possible?"
+            
+    describe "rQuickSort" $ do 
+        it "does nothing to any already sorted list" $
+            rquickSort [1,2,3] `shouldBe` [1,2,3]
         it  "returns [1,2,4,4,5] when given [5,4,1,4,2]" $
-            jquickSort [5,4,1,4,2] `shouldBe` [1,2,4,4,5]
+            rquickSort [5,4,1,4,2] `shouldBe` [1,2,4,4,5]
         it "sorts 'prof' into 'fopr'" $
-           jquickSort "prof" `shouldBe` "fopr"
+           rquickSort "prof" `shouldBe` "fopr"
            
     describe "sayMe" $ do
         it "transmogrifies 1 to \"Uno!\"" $
             sayMe 1 `shouldBe` "Uno!" 
-        it "transogrifies 22 to \"Dos!\"" $
+        it "transogrifies 2 to \"Dos!\"" $
             sayMe 2 `shouldBe` "Dos!" 
         it "transmogrifies 3 to \"Tres!\"" $
             sayMe 3 `shouldBe` "Tres!" 
@@ -61,7 +60,7 @@ spec = do
             sayMe 4 `shouldBe` "Cuatro!" 
         it "transmogrifies 5 to \"Cinco!\"" $
 		    sayMe 5 `shouldBe` "Cinco!"
-        it "transmogrifies any other number to a standard message" $
+        it "transmogrifies any other Integral number to a standard message" $
             sayMe (-3) `shouldBe` "Not between 1 and 5" 
      
     describe "factorial" $ do 

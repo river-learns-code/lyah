@@ -5,7 +5,7 @@ module Baby
  , removeNonUppercase
  , rightTriangles
  , rightTriPer24
- , jquickSort
+ , rquickSort
  , factorial
  , circumference
  , lucky
@@ -47,12 +47,12 @@ addThree = \x -> \y -> \z -> x + y + z
 circumference :: Float -> Float
 circumference r = 2 * pi * r
 
-jquickSort :: Ord a => [a] -> [a]
+rquickSort :: Ord a => [a] -> [a]
 -- Using list comprehensions
-jquickSort []     = []                               -- The empty list is already sorted
-jquickSort (x:xs) = jquickSort ( filter (<=x) xs)    -- Sort the left part of the list
+rquickSort []     = []                               -- The empty list is already sorted
+rquickSort (x:xs) = rquickSort ( filter (<=x) xs)    -- Sort the left part of the list
                    ++ [x] ++                        -- Insert pivot between two sorted parts
-                   jquickSort (filter (>x) xs)  -- Sort the right part of the list
+                   rquickSort (filter (>x) xs)  -- Sort the right part of the list
 
 lucky :: (Integral a) => a -> String
 lucky 7 = "LUCKYNUMBERSEVEN!"
