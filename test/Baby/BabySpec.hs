@@ -39,7 +39,7 @@ spec = do
         it "gives a string saying 'but are you seven? You are not seven' if called with not 7" $
             lucky 22 `shouldBe` "but are you seven? You are not seven" 
         it "should throw some sort of exception if you feed it a float" $
-            pendingWith "is this even possible?"
+            pendingWith "is this even possible to test?"
             
     describe "rQuickSort" $ do 
         it "does nothing to any already sorted list" $
