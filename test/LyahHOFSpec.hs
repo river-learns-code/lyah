@@ -84,8 +84,7 @@ spec = do
             filter' (`elem` ['a' .. 'z']) "we DON'T, like, LIKE the LYAH book" `shouldBe` "welikethebook"
         it "can take the uppercase out, too" $
             filter' (`elem` ['A' .. 'Z'] ) "we DON'T, like, LIKE the LYAH book" `shouldBe` "DONTLIKELYAH"
-      --  it "fuck the guy who wrote lyah, he thinks he's a clever shit" $
-        --    "the guy" `shouldBe` "smarter" --but he never will be
+     
     describe "largestDivisible" $ do
         it "returns the largest number smaller than 100,000 and divisible by 3829" $
             largestDivisible `shouldBe` 99554

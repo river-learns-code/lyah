@@ -23,6 +23,7 @@ where
 multThree :: (Num a) => a -> a -> a -> a 
 multThree x y z = x * y * z 
 
+multTwoWithNine :: Integer -> Integer -> Integer
 multTwoWithNine  = multThree 9  
 
 multWithEighteen = multTwoWithNine 2
@@ -84,3 +85,7 @@ oddSquareSum =
     let oddSquares = filter odd $ map (^2) [1..] 
         belowLimit = takeWhile(<10000) oddSquares
     in sum belowLimit
+
+largestDivisible :: (Integral a) => a
+largestDivisible = head (filter p [100000,99999..])
+    where p x = x `mod` 3829 == 0 
